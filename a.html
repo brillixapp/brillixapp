@@ -1,0 +1,191 @@
+Use code mein is code Ko kisi jagah per add karo kyunki mujhe customer ka detail chahie aur achcha design se isko add karna jo luxury Lage <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .contact-container {
+      background-color: #fff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 900px;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .contact-left {
+      flex: 1;
+      padding: 40px;
+      background-color: #f5f5f5;
+    }
+
+    .contact-right {
+      flex: 1;
+      background: url('https://source.unsplash.com/900x900/?luxury,office') center/cover;
+      display: none; /* hidden for now, can add additional content if desired */
+    }
+
+    .contact-left-title h2 {
+      font-size: 28px;
+      font-weight: 600;
+      color: #333;
+      margin: 0 0 10px;
+    }
+
+    .contact-left hr {
+      border: none;
+      height: 2px;
+      background-color: #007bff;
+      width: 50px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="text"].class-input,
+    input[type="text"].gender-input {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      font-size: 16px;
+      background-color: #fafafa;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .contact-left, .contact-right {
+        flex: 100%;
+      }
+
+      .contact-right {
+        display: none; /* keep the right section hidden on smaller screens */
+      }
+    }
+
+    /* Adding luxury feel */
+    body {
+      background: linear-gradient(135deg, #ffffff, #f4f4f4);
+    }
+
+    .contact-container {
+      margin: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .contact-container:hover {
+      transform: translateY(-10px);
+    }
+
+    input {
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    }
+
+    /* Stylish scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #007bff;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contact-container">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-left" onsubmit="return handleFormSubmit(event)">
+      <div class="contact-left-title">
+        <h2>Get in touch</h2>
+        <hr>
+      </div>
+      <input type="hidden" name="access_key" value="74a96137-9e5f-4ff9-ae9f-9fa13bc35b84">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="number" name="product" placeholder="Phone Number" required>
+      <input type="text" class="class-input" name="Gmail" placeholder="Gmail" required>
+      <input type="text" class="gender-input" name="gender" placeholder="Address" required>
+      <input type="submit" value="Submit">
+    </form>
+
+    <div class="contact-right">
+      <!-- Additional content can be added here, such as luxury images or testimonials -->
+    </div>
+  </div>
+
+  <script>
+    function handleFormSubmit(event) {
+      event.preventDefault(); // Prevent the default form submission
+
+      // Submit the form data to the Web3Forms API
+      const form = event.target;
+      const formData = new FormData(form);
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+      }).then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // After successful form submission, redirect to shop.html
+            window.location.href = '';
+          } else {
+            alert('Form submission failed. Please try again.');
+          }
+        }).catch(error => {
+          console.error('Form submission error:', error);
+          alert('An error occurred. Please try again.');
+        });
+    }
+  </script>
+
+</body>
+
+</html>
